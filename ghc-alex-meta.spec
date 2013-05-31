@@ -1,12 +1,12 @@
 %define		pkgname	alex-meta
 Summary:	Quasi-quoter for Alex lexers
 Name:		ghc-%{pkgname}
-Version:	0.2.0.2
+Version:	0.3.0.5
 Release:	1
 License:	BSD
 Group:		Development/Languages
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	c4974a6fa6b86c6b27a89ba78262cc3c
+# Source0-md5:	a2c39f21b06d2c186ff5b66f53dffc17
 URL:		http://hackage.haskell.org/package/alex-meta/
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-haskell-src-meta
@@ -60,8 +60,9 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{ghcdir}/package.conf.d
 runhaskell Setup.hs copy --destdir=$RPM_BUILD_ROOT
 
 # work around automatic haddock docs installation
-rm -rf %{name}-%{version}-doc
+%{__rm} -rf %{name}-%{version}-doc
 cp -a $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version} %{name}-%{version}-doc
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 
 runhaskell Setup.hs register \
 	--gen-pkg-config=$RPM_BUILD_ROOT/%{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
