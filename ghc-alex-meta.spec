@@ -2,7 +2,7 @@
 Summary:	Quasi-quoter for Alex lexers
 Name:		ghc-%{pkgname}
 Version:	0.3.0.5
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
@@ -85,6 +85,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*.a
 %exclude %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*_p.a
 
+%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data
+%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/Ranged
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/Ranged/*.hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Text
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Text/Alex
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*.hi
@@ -95,5 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*_p.a
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*.p_hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/*.p_hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/Ranged/*.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Text/*.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Text/Alex/*.p_hi
